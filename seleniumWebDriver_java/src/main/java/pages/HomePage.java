@@ -9,14 +9,23 @@ public class HomePage {
     private WebDriver driver;
     //this represents an element in a page
     //this represents the link to the form authentication page.
-    private By formAuthenticationLink = By.linkText("Form Authentication");
+    By formAuthenticationLink = By.linkText("Form Authentication");
 
     public HomePage(WebDriver driver){
         this.driver  = driver;
     }
 
     public LoginPage clickFormAuthenticaton(){
-        driver.findElement(formAuthenticationLink).click();
+        clickLink("Form Authentication");
         return new LoginPage(driver);
+    }
+
+    public DropdownPage clickDropDown() {
+        clickLink("Dropdown");
+        return new DropdownPage(driver);
+    }
+
+    public void clickLink(String linkTest) {
+        driver.findElement(By.linkText(linkTest)).click();
     }
 }
