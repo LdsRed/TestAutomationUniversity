@@ -36,6 +36,7 @@ public class Locators {
         driver.findElement(By.xpath("//button[contains(@class,'submit')]")).click();
         Thread.sleep(3000);
         driver.findElement(By.xpath("//button[@class='logout-btn']")).click();
-        //driver.quit();
+        Thread.sleep(3000);
+        driver.quit();
     }
 }
