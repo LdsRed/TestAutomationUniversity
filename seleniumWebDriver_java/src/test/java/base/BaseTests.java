@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import pages.HomePage;
 
 public class BaseTests {
@@ -17,13 +18,22 @@ public class BaseTests {
 
     @BeforeClass
     public void setUp() throws InterruptedException {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\jordan.larcher\\Documents\\ensign\\java Automation\\TestAutomationUniversity\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.get("https://the-internet.herokuapp.com/");
+        driver.manage().window().maximize();
 
         homePage = new HomePage(driver);
+
+        goHome();
     }
 
+
+    @BeforeMethod
+    public void goHome(){
+        driver.get("https://the-internet.herokuapp.com/");
+        homePage = new HomePage(driver);
+
+    }
     @AfterClass
     public void tearDown() throws InterruptedException {
         Thread.sleep(4000);
