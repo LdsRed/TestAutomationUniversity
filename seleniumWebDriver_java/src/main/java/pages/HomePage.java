@@ -59,6 +59,17 @@ public class HomePage {
         clickLink("Nested Frames");
         return new NestedFrames(driver);
     }
+
+    public DynamicLoadingPage clickDynamicLoadingPage(){
+        clickLink("Dynamic Loading");
+        return new DynamicLoadingPage(driver);
+    }
+
+    public LargeAndDeepDomPage clickLargeAndDeepDom(){
+        clickLink("Large & Deep DOM");
+        return new LargeAndDeepDomPage(driver);
+    }
+
     public void clickLink(String linkTest) {
         driver.findElement(By.linkText(linkTest)).click();
     }
