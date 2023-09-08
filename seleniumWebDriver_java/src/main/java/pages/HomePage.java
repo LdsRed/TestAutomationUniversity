@@ -70,6 +70,26 @@ public class HomePage {
         return new LargeAndDeepDomPage(driver);
     }
 
+    public InfiniteScrollPage clickInfiniteScrollPage(){
+        clickLink("Infinite Scroll");
+        return new InfiniteScrollPage(driver);
+    }
+
+    public SelectOptionFromDropdown clickDropdownPage() {
+        clickLink("Dropdown");
+        return new SelectOptionFromDropdown(driver);
+    }
+
+    public MultipleWindows clickMultipleWindowsPage(){
+        clickLink("Multiple Windows");
+        return new MultipleWindows(driver);
+    }
+
+    public DynamicLoadingPagePart2 clickDynamicLoadingPagePar2(){
+        clickLink("Dynamic Loading");
+        return new DynamicLoadingPagePart2(driver);
+    }
+
     public void clickLink(String linkTest) {
         driver.findElement(By.linkText(linkTest)).click();
     }
