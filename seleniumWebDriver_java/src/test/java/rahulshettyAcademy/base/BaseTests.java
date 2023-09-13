@@ -38,8 +38,13 @@ public class BaseTests {
     }
     @AfterClass
     public void tearDown() throws InterruptedException {
+<<<<<<< HEAD
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         //driver.quit();
+=======
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+        driver.quit();
+>>>>>>> 7739b21f30b5dee43957a925bbf43fa74e8983b4
     }
 
 
