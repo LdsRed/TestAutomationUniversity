@@ -9,6 +9,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import pages.HomePage;
+import utils.WindowManager;
 
 import java.time.Duration;
 
@@ -20,7 +21,7 @@ public class BaseTests {
 
     @BeforeClass
     public void setUp() throws InterruptedException {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\ldsla\\OneDrive\\Documentos\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
+        //System.setProperty("webdriver.chrome.driver", "/home/flia/Documentos/TestAutomationUniversity/chromedriver-linux64/chromedriver");
         driver = new ChromeDriver();
         driver.get("https://the-internet.herokuapp.com/");
         driver.manage().window().maximize();
@@ -39,8 +40,13 @@ public class BaseTests {
     }
     @AfterClass
     public void tearDown() throws InterruptedException {
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.quit();
+    }
+
+
+    public WindowManager getWindowManager(){
+        return new WindowManager(driver);
     }
 
 
