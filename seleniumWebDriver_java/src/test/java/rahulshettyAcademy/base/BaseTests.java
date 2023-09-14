@@ -17,6 +17,8 @@ public class BaseTests {
     protected GreenKart greenKart;
 
 
+
+
     @BeforeClass
     public void setUp() throws InterruptedException {
         //System.setProperty("webdriver.chrome.driver", "C:\\Users\\ldsla\\OneDrive\\Documentos\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
@@ -34,17 +36,11 @@ public class BaseTests {
     public void goHome(){
         driver.get("https://rahulshettyacademy.com/seleniumPractise/#/");
         greenKart = new GreenKart(driver);
-
     }
     @AfterClass
-    public void tearDown() throws InterruptedException {
-<<<<<<< HEAD
+    public void tearDown() {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         //driver.quit();
-=======
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
-        driver.quit();
->>>>>>> 7739b21f30b5dee43957a925bbf43fa74e8983b4
     }
 
 

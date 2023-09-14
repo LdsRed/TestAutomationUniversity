@@ -3,11 +3,12 @@ package pages.rahulShettyAcademy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-<<<<<<< HEAD
+
 import java.time.Duration;
-=======
->>>>>>> 7739b21f30b5dee43957a925bbf43fa74e8983b4
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,12 +20,17 @@ public class GreenKart {
     //this represents the link to the form authentication page.
     private By productsName = By.cssSelector("h4.product-name");
 
-<<<<<<< HEAD
     private By addToCartButton = By.xpath("//div[@class='product-action']/button");
-=======
-    private By addToCartButton = By.xpath("//button[text()='ADD TO CART']");
->>>>>>> 7739b21f30b5dee43957a925bbf43fa74e8983b4
+
     private By addMoreItems = By.xpath("//a[text()='+']");
+
+    private By promoCode = By.xpath("//input[@class='promoCode']");
+
+    private By cartButton = By.cssSelector("img[alt='Cart']");
+
+    private By proceedToCheckOutButton = By.xpath("//button[contains(text(), 'PROCEED TO CHECKOUT')] ");
+
+
 
     int count = 0;
 
@@ -47,20 +53,15 @@ public class GreenKart {
             String formattedName = product_name[0].trim();
 
 
-            List itemsNeededList = Arrays.asList(productsNeeded);
+            List<String> itemsNeededList = Arrays.asList(productsNeeded);
 
             if (itemsNeededList.contains(formattedName)){
 
-<<<<<<< HEAD
-                for (int j = 0; j < (amountItemsNeeded - 1); j++){
-=======
-                for (int j = 0; j <= amountItemsNeeded; j++){
->>>>>>> 7739b21f30b5dee43957a925bbf43fa74e8983b4
-                    driver.findElements(addMoreItems).get(i).click();
+                for (int j = 0; j < (amountItemsNeeded - 1); j++) {
+
+                    driver.findElements(addToCartButton).get(i).click();
+                    count++;
                 }
-                driver.findElements(addToCartButton).get(i).click();
-                count++;
-<<<<<<< HEAD
                 if(count == itemsNeededList.size()) {
                     break;
                 }
@@ -69,16 +70,17 @@ public class GreenKart {
             }
         }
 
-
-=======
-                if(count == 3) {
-                    break;
-                }
-            }
-        }
->>>>>>> 7739b21f30b5dee43957a925bbf43fa74e8983b4
+        //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        //wait.until(ExpectedConditions.)
     }
 
+    public CartPage clickProceedButton(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        driver.findElement(cartButton).click();
+        driver.findElement(proceedToCheckOutButton).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(promoCode));
+        return new CartPage(driver);
+    }
 
     public void clickLink(String linkTest) {
         driver.findElement(By.linkText(linkTest)).click();
